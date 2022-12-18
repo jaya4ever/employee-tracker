@@ -17,3 +17,7 @@ let dataB;
         console.log(`Connected to the department_db database.`)
     );
 }
+async function inquirerUser(){
+    await init()
+    
+}
