@@ -21,7 +21,7 @@ async function inquirerUser(){
     await init()
     const [departments] = await dataB.execute("SELECT department.id, department.name FROM department")
     const [roles] = await dataB.execute("SELECT role.id, role.title, role.salary FROM role JOIN department ON role.department_id = department.id;" )
-    const [employees] = await db.execute(`SELECT employee.id, employee.first_name, employee.last_name, role.title as roleTitle, department.name as departmentName, role.salary, manager.first_name AS managerName
+    const [employees] = await dataB.execute(`SELECT employee.id, employee.first_name, employee.last_name, role.title as roleTitle, department.name as departmentName, role.salary, manager.first_name AS managerName
     FROM (
     (employee JOIN role ON role_id = role.id)
     left join 
@@ -32,3 +32,9 @@ async function inquirerUser(){
     ON department_id = department.id
     );`)
 }
+const { option } = await inquirer([{
+    type: 'list',
+    name: 'option',
+    message: 'What would you like to do?',
+    choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role', 'Exit']
+}])
