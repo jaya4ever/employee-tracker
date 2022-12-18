@@ -1,6 +1,6 @@
 // defining required packages
-const sql = require('mysql2');
-const inquirer = require('inquirer');
+const mysql = require('mysql2');
+const {inquirer} = require('inquirer');
 
 let dataB;
 
@@ -39,4 +39,4 @@ const { option } = await inquirer([{
     choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role', 'Exit']
 }])
 //choosing an option
-console.log(`Choose an option: ${option}`)
+console.log(`Choose an option: ${option}`);
