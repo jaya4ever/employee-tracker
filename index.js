@@ -40,3 +40,24 @@ const { option } = await inquirer([{
 }])
 //choosing an option
 console.log(`Choose an option: ${option}`);
+
+if (option === 'View all departments') {
+    console.table(departments)
+    promptUser();
+} else if (option === 'View all roles') {
+    console.table(roles)
+    promptUser();
+} else if (option === 'View all employees') {
+    console.table(employees)
+    promptUser();
+} else if (option === 'Add a department') {
+    addDepartment();
+} else if (option === 'Add a role') {
+    addRole(departments);
+} else if (option === 'Add an employee') {
+    addEmployeePrompt(roles, employees);
+} else if (option === "Update an employee role") {
+    updateEmployeePrompt();
+} else { process.exit() };
+
+
