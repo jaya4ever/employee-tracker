@@ -1,4 +1,16 @@
 # 12 SQL: Employee Tracker
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+## Description
+### This is the module challenge 12 . This challenge is to create an application called Employee tracker. I worked on this application with the help of my tutor, my team and was doing practicing. I was going through the class recording, [Mozilla]( https://developer.mozilla.org/en-US/docs/Web/JavaScript "dev.Mozilla"), [w3schools](https://www.w3schools.com/js/ "w3Schools"), asked questions in [stackoverflow](https://stackoverflow.com "stackoverflow.com"). I took help from everyone while conpleting this challenge.This project uses MySql and Node through the command line to allow business owners to view and manage their departments, roles, and employees in order to organize and plan their business. In this homework assignment, our challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.A command line application Content Management Systems for managing a company's employees where it can view and manage the departments, roles, and employees.
+
+
+## Installation
+* Cloned the given starter code
+* To Run this application Node.js is required
+* Install the npm install for the required npm pacakges
+
+## This is my GitHub Repository which I named Employee-Tracker
+[GitHub](https://github.com/jaya4ever/employee-tracker "GitHub Repository")
 
 
 
@@ -32,20 +44,10 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
 ```
 
-## Mock-Up
 
-The following video shows an example of the application being used from the command line:
-
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](https://2u-20.wistia.com/medias/2lnle7xnpk)
 
 ## Getting Started
 
-
-Design the database schema as shown in the following image:
-
-![Database schema includes tables labeled “employee,” role,” and “department.”](./Assets/12-sql-homework-demo-01.png)
-
-As the image illustrates, your schema should contain the following three tables:
 
 * `department`
 
@@ -90,4 +92,20 @@ Try to add some additional functionality to your application, such as the abilit
 * Delete departments, roles, and employees.
 
 * View the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department.
+
+
+
+## Features Used in this application
+
+* JavaScript
+* Node.js
+* MySQL
+* npm packages
+* Inquirer
+
+## License
+
+  Copyright (c) 2022 [GitHub](https://github.com/jaya4ever/employee-tracker)  **Note** This application is under the [MIT](https://MIT-license.org)
+
+
 

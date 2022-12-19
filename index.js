@@ -34,7 +34,7 @@ async function inquirerUser() {
     FROM (
     (employee JOIN role ON role_id = role.id)
     left join 
-    (select * from employee) as manager
+    (SELECT * FROM employee) as manager
     on manager.id = employee.manager_id
     JOIN 
     department 
