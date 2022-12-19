@@ -2,17 +2,18 @@ const mysql = require('mysql2/promise');
 const { prompt } = require("inquirer");
 let dataB;
 
-promptUser();
+inquirerUser();
 
 async function init() {
     dataB = await mysql.createConnection(
         {
+            // need help from tutor to create the .env variable to save my credentials
             host: '127.0.0.1',
             user: 'root',
             password: '7777',
             database: 'department_db'
         },
-        console.log(`Connected to the employees_db database.`)
+        console.log(`Connected to the department_db database.`)
     );
 }
 
@@ -22,15 +23,15 @@ console.log("*   EMPLOYEE TRACKER              *")
 console.log("*                                 *")
 console.log("***********************************")
 
-async function promptUser() {
+async function inquirerUser() {
     await init()
 
-    const [departments] = await dataB.execute("select department.id, department.name from department")
+    const [departments] = await dataB.execute("SELECT department.id, department.name FROM department")
 
     const [roles] = await dataB.execute("SELECT department.name, role.title, role.id, role.salary FROM role JOIN department ON role.department_id = department.id;")
 
-    const [employees] = await dataB.execute(`select employee.id, employee.first_name, employee.last_name, role.title as roleTitle, department.name as departmentName, role.salary, manager.first_name AS managerName
-    from (
+    const [employees] = await dataB.execute(`SELECT employee.id, employee.first_name, employee.last_name, role.title as roleTitle, department.name as departmentName, role.salary, manager.first_name AS managerName
+    FROM (
     (employee JOIN role ON role_id = role.id)
     left join 
     (select * from employee) as manager
@@ -48,16 +49,16 @@ async function promptUser() {
     }])
 
     console.log(`You chose to: ${option}`)
-    // If statement conditions check which option was selected, and call the appropriate function or query. Calls promptUser again so they can choose more options after one is fulfilled - some call in if statements, others call within individual function
+    // If statement conditions check which option was selected, and call the appropriate function or query. Calls inquirerUser again so they can choose more options after one is fulfilled - some call in if statements, others call within individual function
     if (option === 'View all departments') {
         console.table(departments)
-        promptUser();
+        inquirerUser();
     } else if (option === 'View all roles') {
         console.table(roles)
-        promptUser();
+        inquirerUser();
     } else if (option === 'View all employees') {
         console.table(employees)
-        promptUser();
+        inquirerUser();
     } else if (option === 'Add a department') {
         addDepartment();
     } else if (option === 'Add a role') {
@@ -86,7 +87,7 @@ async function addDepartment() {
     const [departments] = await dataB.execute("select * from department")
     console.table(departments);
 
-    promptUser();
+    inquirerUser();
 }
 
 async function addRole(departments) {
@@ -127,7 +128,7 @@ async function addRole(departments) {
     const [roles] = await dataB.execute("SELECT department.name, role.title, role.id, role.salary FROM role JOIN department ON role.department_id = department.id;")
     console.table(roles);
 
-    promptUser();
+    inquirerUser();
 }
 
 
@@ -176,7 +177,7 @@ async function addEmployeePrompt(roles, employees) {
     const [updatedEmployees] = await dataB.execute("SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, department.name, role.title, role.salary FROM ((employee INNER JOIN role ON role_id = role.id) INNER JOIN department ON department_id = department.id);")
     console.table(updatedEmployees);
 
-    promptUser();
+    inquirerUser();
 }
 
 
@@ -214,6 +215,6 @@ async function updateEmployeePrompt() {
     const [updatedEmployees] = await dataB.execute("SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, department.name, role.title, role.salary FROM ((employee INNER JOIN role ON role_id = role.id) INNER JOIN department ON department_id = department.id);")
     console.table(updatedEmployees);
 
-    promptUser();
+    inquirerUser();
 
 }
