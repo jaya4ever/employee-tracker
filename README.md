@@ -1,7 +1,7 @@
 # 12 SQL: Employee Tracker
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Description
-### This is the module challenge 12 . This challenge is to create an application called Employee tracker. I worked on this application with the help of my tutor, my team and was doing practicing. I was going through the class recording, [Mozilla]( https://developer.mozilla.org/en-US/docs/Web/JavaScript "dev.Mozilla"), [w3schools](https://www.w3schools.com/js/ "w3Schools"), asked questions in [stackoverflow](https://stackoverflow.com "stackoverflow.com"). I took help from everyone while completing this challenge.This project uses MySql and Node through the command line to allow business owners to view and manage their departments, roles, and employees in order to organize and plan their business. In this homework assignment, our challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.A command line application Content Management Systems for managing a company's employees where it can view and manage the departments, roles, and employees.
+### This is the module challenge 12 . This challenge is to create an application called Employee tracker. I worked on this application with the help of my tutor, my team and was doing practicing. I was going through the class recording, [Mozilla]( https://developer.mozilla.org/en-US/docs/Web/JavaScript "dev.Mozilla"), [w3schools](https://www.w3schools.com/js/ "w3Schools"), asked questions in [stackoverflow](https://stackoverflow.com "stackoverflow.com") and most importantly and helpul was the AskBCS Learning Assistant. I took help from everyone while completing this challenge.This project uses MySql and Node through the command line to allow business owners to view and manage their departments, roles, and employees in order to organize and plan their business. In this homework assignment, our challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.A command line application Content Management Systems for managing a company's employees where it can view and manage the departments, roles, and employees.
 
 
 ## Installation
@@ -11,6 +11,9 @@
 
 ## This is my GitHub Repository which I named Employee-Tracker
 [GitHub](https://github.com/jaya4ever/employee-tracker "GitHub Repository")
+
+### This is the video of my application
+[employeeTracker.webm](https://user-images.githubusercontent.com/111536082/208730151-91ba1fc7-aec7-400e-84b1-155a50399508.webm)
 
 
 
