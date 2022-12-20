@@ -19,7 +19,7 @@ async function init() {
 
 console.log("***********************************")
 console.log("*                                 *")
-console.log("*   EMPLOYEE TRACKER              *")
+console.log("*   EMPLOYEE MANAGER              *")
 console.log("*                                 *")
 console.log("***********************************")
 
@@ -119,7 +119,7 @@ async function addRole(departments) {
     const roleTitle = title;
     const roleSalary = salary;
     const roleDepartment = department.id;
-    
+
 
     let query = 'INSERT into role (title, salary, department_id) VALUES (?, ?, ?)';
     let args = [roleTitle, roleSalary, roleDepartment];
