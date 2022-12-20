@@ -77,7 +77,18 @@ async function inquirerUser() {
         addEmployeePrompt(roles, employees);
     } else if (option === "Update an employee role") {
         updateEmployeePrompt();
-    } else { process.exit() };
+    } else if (option === "Update Employee Manager"){
+        updateEmployeeManagerPrompt();
+    } else if (option === "View Employees By Department"){
+        viewEmployessByDepartmentPrompt();
+    } else if(option === "Delete Department"){
+        deleteDepartmentPrompt();
+    } else if (option === "Delete Employee"){
+        deleteEmployeePrompt();
+    } else if(option === "View Department Budgets"){
+        viewDepartmentBudgetsPrompt();
+    }else
+    { process.exit() };
 
 }
 // when choosing the department then enter the name of the department and that department is added to the database
@@ -230,4 +241,75 @@ async function updateEmployeePrompt() {
 
     inquirerUser();
 
+    
+
+}
+
+
+
+/*async function updateEmployeeManagerPrompt(){
+    const [managers] = await dataB.execute("select * from department")
+        const response = await prompt([
+            {
+                type: 'list',
+                name: 'manager',
+                message: 'Which employee manager you want to update?',
+                choices: managers.map(manager => ({name: manager.first_name + " " + manager.last_name, value: manager}) )
+              
+
+        },
+       
+
+        ])
+        const {manager} = response
+        console.log(manager);
+        console.log(response);
+
+
+       
+        const managerFN = manager.first_name;
+        const managerLS = manager.last_name;
+        const managerId = manager.id;
+
+        let query = 'SELECT name FROM department WHERE id = ?';
+        let args = [managerFN,managerLS, managerId ];
+        const help = await dataB.query(query, args);
+        console.log(`Updated ${managerFN}'s role to ${managerId}`);
+
+        const [updatedEmployeeManager] = await dataB.execute("SELECT manager.id, manager.first_name,department.name AS MANAGER FROM((department INNER JOIN employee ON employee_id = employee.id)INNER JOIN department ON department_id)LEFT JOIN employee ON manager_id")
+    console.table(updatedEmployeeManager);
+        
+    inquirerUser();
+        
+}*/
+
+    /*async function deleteDepartmentPrompt () {
+    const department_db = await dataB.execute("select * from department")
+        
+    const departmentList = department_db.map(({ id, name }) => ({ name: name, value: id}));
+    const response = await prompt(
+        [
+            {
+                type: 'list',
+                name: 'deletedepartment',
+                message: 'Department to delete:',
+                choices: departmentList,
+
+            }
+        ]
+    )
+    const{deletedepartment} = response;
+    console.log(deletedepartment);
+   
+    const deleteN = dataB.execute('DELETE FROM department WHERE id = ?');
+    console.table(deleteN)
+    inquirerUser();
+    }*/
+
+const viewDepartmentBudgetsPrompt = async () => {
+   const budget = await dataB.execute('SELECT DISTINCT department.name AS DEPARTMENT, SUM(role.salary) AS BUDGET FROM department  JOIN role  ON department_id = department_id JOIN employee ON role_id = role_id GROUP BY department.name')
+
+        console.table(budget);
+
+        inquirerUser();
 }
