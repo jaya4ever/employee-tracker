@@ -50,7 +50,12 @@ async function inquirerUser() {
         type: 'list',
         name: 'option',
         message: 'What would you like to do?',
-        choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role', 'Exit']
+        choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update an employee role', 'Update Employee Manager',
+        'View Employees By Department',
+        'Delete Department',
+        'Delete Role',
+        'Delete Employee',
+        'View Department Budgets','Exit']
     }])
 
     console.log(`You chose to: ${option}`)
@@ -220,6 +225,8 @@ async function updateEmployeePrompt() {
 
     const [updatedEmployees] = await dataB.execute("SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, department.name, role.title, role.salary FROM ((employee INNER JOIN role ON role_id = role.id) INNER JOIN department ON department_id = department.id);")
     console.table(updatedEmployees);
+
+    
 
     inquirerUser();
 
