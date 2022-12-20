@@ -1,6 +1,9 @@
+//defining variables for the required package
 const mysql = require('mysql2/promise');
 const { prompt } = require("inquirer");
+
 let dataB;
+
 
 inquirerUser();
 
@@ -23,13 +26,15 @@ console.log("*   EMPLOYEE MANAGER              *")
 console.log("*                                 *")
 console.log("***********************************")
 
+// function is starting to view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
 async function inquirerUser() {
     await init()
 
+   // when view the department then showing department names and department ids
     const [departments] = await dataB.execute("SELECT department.id, department.name FROM department")
-
+    // when view roles then showing with the job title, role id, the department that role belongs to, and the salary for that role
     const [roles] = await dataB.execute("SELECT department.name, role.title, role.id, role.salary FROM role JOIN department ON role.department_id = department.id;")
-
+    // when view employess then it is presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
     const [employees] = await dataB.execute(`SELECT employee.id, employee.first_name, employee.last_name, role.title as roleTitle, department.name as departmentName, role.salary, manager.first_name AS managerName
     FROM (
     (employee JOIN role ON role_id = role.id)
@@ -70,7 +75,7 @@ async function inquirerUser() {
     } else { process.exit() };
 
 }
-
+// when choosing the department then enter the name of the department and that department is added to the database
 async function addDepartment() {
     const { newDepartment } = await prompt([{
         type: 'input',
@@ -89,7 +94,7 @@ async function addDepartment() {
 
     inquirerUser();
 }
-
+//when choosing the role then enter the name, salary, and department for the role and that role is added to the database
 async function addRole(departments) {
 
 
@@ -132,7 +137,7 @@ async function addRole(departments) {
     inquirerUser();
 }
 
-
+// when choosing the employee then enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 async function addEmployeePrompt(roles, employees) {
     const response = await prompt([
         {
@@ -181,7 +186,7 @@ async function addEmployeePrompt(roles, employees) {
     inquirerUser();
 }
 
-
+// when choosing to update an employee role then select an employee to update and their new role and this information is updated in the database 
 async function updateEmployeePrompt() {
     const [roles] = await dataB.execute("select * from role")
     const [employees] = await dataB.execute("select * from employee")
