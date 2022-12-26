@@ -12,8 +12,12 @@
 ## This is my GitHub Repository which I named Employee-Tracker
 [GitHub](https://github.com/jaya4ever/employee-tracker "GitHub Repository")
 
+## Note
+### I have uploaded the updated video as the one I submitted had an error.Though I always submit my HW on time. Before the employee name and Manager name was showing same. Now the employee and manager name are different, also this time I have added view department by budget.
+
 ### This is the video of my application
-[employeeTracker.webm](https://user-images.githubusercontent.com/111536082/208730151-91ba1fc7-aec7-400e-84b1-155a50399508.webm)
+[employee-tracker-video.webm](https://user-images.githubusercontent.com/111536082/209549624-4b3f10f1-31d8-45fc-9a93-9dead22f51d8.webm)
+
 
 
 
